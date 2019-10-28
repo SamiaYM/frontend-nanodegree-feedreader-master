@@ -1,18 +1,5 @@
-/* feedreader.js
- *
- * This is the spec file that Jasmine will read and contains
- * all of the tests that will be run against your application.
- */
-
-/* We're placing all of our tests within the $() function,
- * since some of these tests may require DOM elements. We want
- * to ensure they don't run until the DOM is ready.
- */
 $(function() {
-    /* This is our first test suite - a test suite just contains
-    * a related set of tests. This suite is all about the RSS
-    * feeds definitions, the allFeeds variable in our application.
-    */
+
     describe('RSS Feeds', function() {
         /* This is our first test - it tests to make sure that the
          * allFeeds variable has been defined and that it is not
@@ -71,7 +58,7 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
-         it('menu display when clicked, and hide when clicked again?', function() {
+         it('menu display when clicked, and hide when clicked again', function() {
              menuClicked.click();
              expect(menuStatus[0].className).toBeFalsy();
 
@@ -89,7 +76,11 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-         expect(loadFeed).toHaveBeenCalled();
+         beforeEach(function(done) {
+           it("loadFeed function is called and completes, there is at least one entry in feed container ", function(done){
+                expect(entriesLen).toBeGreaterThan(0);
+           });
+         });
 
     });
     /* TODO: Write a new test suite named "New Feed Selection" */
@@ -99,10 +90,12 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+         beforeEach(function(done) {
+           const feedBeforeChanged = document.querySelector('.feed').children[0].href;
+           it("feed is changed loaded by the loadFeed function", function(done){
+               expect(entries).not.toEqual(feedBeforeChanged);
+
+           });
+         });
     });
 }());
-
-
-//https://blog.harveydelaney.com/running-multiple-test-cases-in-jasmine/
-//https://stackoverflow.com/questions/43309712/how-to-check-if-a-value-is-not-null-and-not-empty-string-in-js/43309811
-//https://www.tutorialspoint.com/jasminejs/jasminejs_null_check.htm
