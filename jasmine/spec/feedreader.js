@@ -33,9 +33,8 @@ $(function() {
          * and that the URL is not empty.
          */
          it('allFeeds has a URL defined and that the URL is not empty', function() {
-                  expect(allFeeds[0].url).toContain('http://');
                   expect(allFeeds[0].url).not.toBeNull();
-
+                  expect(allFeeds[0].url).toContain('http://');
 
          });
 
@@ -44,8 +43,8 @@ $(function() {
          * and that the name is not empty.
          */
          it('allFeeds has a name defined and that the name is not empty', function() {
-                  expect(allFeeds[0].name).not.toBe('');
                   expect(allFeeds[0].name).not.toBeNull();
+                  expect(allFeeds[0].name).not.toBe('');
          });
     });
 
@@ -60,7 +59,7 @@ $(function() {
          * hiding/showing of the menu element.
          */
          it('the menu element is hidden by default', function() {
-             expect(menuStatus[0].className).toContain("menu-hidden");
+             expect(menuStatus[0].classList).toContain("menu-hidden");
          });
          /* TODO: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
@@ -87,10 +86,11 @@ $(function() {
          */
          beforeEach(function(done) {
            loadFeed(0, done)
-           const entry = $('.feed').html()
+           const entry = document.querySelector('.feed .entry')
 
          it("loadFeed function is called and completes, there is at least one entry in feed container ", function(done) {
               expect(entry.length).toBeGreaterThan(0);
+              done();
          });
          });
 
