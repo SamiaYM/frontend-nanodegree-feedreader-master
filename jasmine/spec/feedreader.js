@@ -33,9 +33,10 @@ $(function() {
          * and that the URL is not empty.
          */
          it('allFeeds has a URL defined and that the URL is not empty', function() {
+              for (let i = 0; i<allFeeds.length; i++) {
                   expect(allFeeds[0].url).toBeDefined();
                   expect(allFeeds[0].url).toContain('http://');
-
+              }
          });
 
         /* TODO: Write a test that loops through each feed
@@ -43,8 +44,10 @@ $(function() {
          * and that the name is not empty.
          */
          it('allFeeds has a name defined and that the name is not empty', function() {
-                  expect(allFeeds[0].name).toBeDefined();
-                  expect(allFeeds[0].name).not.toBe('');
+                for (let i = 0; i<allFeeds.length; i++) {
+                    expect(allFeeds[0].name).toBeDefined();
+                    expect(allFeeds[0].name).not.toBe('');
+                }
          });
     });
 
@@ -84,14 +87,14 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-         beforeEach(function(done) {
-           loadFeed(0, done)
-           const entry = document.querySelector('.feed .entry')
-
          it("loadFeed function is called and completes, there is at least one entry in feed container ", function(done) {
+              const entry = document.querySelectorAll('.feed .entry')
               expect(entry.length).toBeGreaterThan(0);
               done();
          });
+
+         beforeEach(function(done) {
+           loadFeed(0, done)
          });
 
     });
