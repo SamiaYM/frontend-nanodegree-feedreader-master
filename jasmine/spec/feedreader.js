@@ -33,7 +33,7 @@ $(function() {
          * and that the URL is not empty.
          */
          it('allFeeds has a URL defined and that the URL is not empty', function() {
-                  expect(allFeeds[0].url).not.toBeNull();
+                  expect(allFeeds[0].url).toBeDefined();
                   expect(allFeeds[0].url).toContain('http://');
 
          });
@@ -43,7 +43,7 @@ $(function() {
          * and that the name is not empty.
          */
          it('allFeeds has a name defined and that the name is not empty', function() {
-                  expect(allFeeds[0].name).not.toBeNull();
+                  expect(allFeeds[0].name).toBeDefined();
                   expect(allFeeds[0].name).not.toBe('');
          });
     });
@@ -59,7 +59,7 @@ $(function() {
          * hiding/showing of the menu element.
          */
          it('the menu element is hidden by default', function() {
-             expect(menuStatus[0].classList).toContain("menu-hidden");
+                expect(menuStatus.hasClass("menu-hidden")).toBe(true);
          });
          /* TODO: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
@@ -68,10 +68,10 @@ $(function() {
           */
          it('menu display when clicked, and hide when clicked again', function() {
              menuClicked.click();
-             expect(menuStatus[0].className).toBeFalsy();
+             expect(menuStatus.hasClass("menu-hidden")).not.toBe(true);
 
              menuClicked.click();
-             expect(menuStatus[0].className).toBeTruthy();
+             expect(menuStatus.hasClass("menu-hidden")).toBe(true);
 
 
          });
