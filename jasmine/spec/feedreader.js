@@ -34,8 +34,8 @@ $(function() {
          */
          it('allFeeds has a URL defined and that the URL is not empty', function() {
               for (let i = 0; i<allFeeds.length; i++) {
-                  expect(allFeeds[0].url).toBeDefined();
-                  expect(allFeeds[0].url).toContain('http://');
+                  expect(allFeeds[i].url).toBeDefined();
+                  expect(allFeeds[i].url).toContain('http://');
               }
          });
 
@@ -45,8 +45,8 @@ $(function() {
          */
          it('allFeeds has a name defined and that the name is not empty', function() {
                 for (let i = 0; i<allFeeds.length; i++) {
-                    expect(allFeeds[0].name).toBeDefined();
-                    expect(allFeeds[0].name).not.toBe('');
+                    expect(allFeeds[i].name).toBeDefined();
+                    expect(allFeeds[i].name).not.toBe('');
                 }
          });
     });
